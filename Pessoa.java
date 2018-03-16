@@ -7,14 +7,14 @@ public class Pessoa{
     }
     public void setNome(String novoNome){
             nome = novoNome;
-
+    }
     public String getEmail(){
             return this.email;
     }
     public void setEmail(String novoEmail){
             email = novoEmail;
-
-
+    
+    }
     public void mostraDados(){
         System.out.println("Dados Cadastrais: ");
         System.out.println("Nome: "+this.nome + " Email: "+this.email);
