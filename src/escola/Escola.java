@@ -26,6 +26,9 @@ public class Escola{
     	listaAlunos.add("Henrique");
     	listaAlunos.add("João");
     	listaAlunos.add("Pietro");
+    	listaAlunos.add("Camila");
+    	listaAlunos.add("Tiago");
+    	listaAlunos.add("Leonardo");
     	listaNotas.add(6);
     	listaNotas.add(8);
     	listaNotas.add(9);
@@ -33,6 +36,9 @@ public class Escola{
     	listaNotas.add(7);
     	listaNotas.add(4);
     	listaNotas.add(10);
+    	listaNotas.add(4);
+    	listaNotas.add(8);
+    	listaNotas.add(6);
     	for (Integer nota : listaNotas) {
     		if (nota >= 7) {
 				System.out.println("Passou no Trimestre!");
