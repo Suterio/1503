@@ -1,7 +1,7 @@
 package escola;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 public class Escola{
     public static void main (String args[]){
@@ -35,12 +35,13 @@ public class Escola{
     	listaNotas.add(10);
     	for (Integer nota : listaNotas) {
     		if (nota >= 7) {
-				System.out.println("Passou no Trimestre!")
-				else
-					System.out.println("Não passou no Trimestre!")
-			}
-			
-		}
+				System.out.println("Passou no Trimestre!");
+    		} 
+				System.out.println("Não passou no Trimestre!");
+    		
+    	}	
+    		
+		
     }
 
 
