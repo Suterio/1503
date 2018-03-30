@@ -3,28 +3,39 @@ import java.io.Console;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import javax.xml.ws.handler.MessageContext.Scope;
-
-
 public class Escola{
+	
+	public static ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
+	public static ArrayList<Professor> listaProf = new ArrayList<Professor>();
+	
+	public static Scanner scan = new Scanner(System.in);
+	
+	
     public static void main (String args[]){
-    
-/*        Pessoa p = new Pessoa(args[0],args[1]);
-        p.mostraDados();
-        
-        Aluno a = new Aluno(args[0],args[1],Long.parseLong(args[2]));
-        a.mostraDados();
-        
-        Professor prof = new Professor(args[0],args[1],args[3],Integer.parseInt(args[4]));
-        prof.mostraDados();  */
-    	
-    	testArrayList();
-    	//testaConsole();
-    	//testaScanner();
-    	
+    int opMenu = menu();
+    switch (opMenu) {
+	case 1:
+		//menuAlunos();
+		System.out.println("Menu 1");
+		Aluno al = new Aluno();
+		listaAlunos.add(al);
+		break;
+	case 2:
+		//menuProfessores();
+		System.out.println("Menu 2");
+		Professor pr = new Professor();
+		listaProf.add(pr);
+		break;
+
+	default:
+		System.out.println("Opção invalida");
+		System.exit(0);
+		break;
+		
+	}
     }
     
-    public static void testaConsole() {
+  /*  public static void testaConsole() {
 		
     	Console cons = System.console();
     	if(cons==null) {
@@ -35,9 +46,9 @@ public class Escola{
     	String valor = cons.readLine("Informe um valor: ");
     	System.out.println("Você informou: "+valor);
     	
-	}
+	}*/
     
-    public static void testaScanner() {
+    /*public static void testaScanner() {
     	
     	Scanner scan = new Scanner(System.in);
     	System.out.println("Informe um valor String");
@@ -53,15 +64,32 @@ public class Escola{
     	System.out.println("Nome Completo: "+nome);
     	
 		
-	}
-    public static void Menu() {
+	}*/
+    public static int menu() {
+
+    	int opcao = 0;
     	System.out.println("MENU:");
-    	System.out.println("Cadastro de Alunos");
-    	System.out.println("Cadastro de Professores");
-    	
+    	System.out.println("Cadastro de Alunos e Cadastro de Professores ");
+    	System.out.println("Digite a opção 1 para cadastro de alunos");
+    	System.out.println("Digite 2 Para cadastro de Professores");
+    	System.out.println("Digite  99 para sair do programa");
+    	System.out.print("Digite aqui sua opção: ");
+        opcao = Integer.parseInt(scan.nextLine());
+        return opcao;
+        
+/*        if(opcao == 1 ) {
+        	Aluno al = new Aluno("Gabriel","gabrielst997@gmail.com",19305);
+        }
+        else if(opcao == 2) {
+        	Prof pr = new Prof("Gabriel","gabrielst997@gmail.com",19305,"Matemática",650);
+        	
+        }else if(opcao == 99) {
+        	System.exit(0);
+        }*/
     }
     
-    public static void testArrayList(){
+    
+    /*public static void testArrayList(){
     	ArrayList<String> listaAlunos = new ArrayList<String>();
     	ArrayList<Integer> listaNotas = new ArrayList<Integer>();
     	listaAlunos.add("José");
@@ -94,7 +122,7 @@ public class Escola{
     	}	
     		
 		
-    }
+    }*/
 
 
 

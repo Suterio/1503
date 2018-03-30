@@ -4,6 +4,18 @@ public class Professor extends Pessoa{
     private String disciplina;
     private int cargaHoraria;
 
+    public Professor(){
+        super();
+        System.out.println("Informe a disciplina:");
+        String dis = Escola.scan.nextLine();
+        System.out.println("Informe a Carga Horaria:");
+        int ch = Escola.scan.nextInt();
+        Escola.scan.nextLine();
+        this.disciplina = dis ;
+        this.cargaHoraria = ch;
+    }
+    
+    
     public String getDisciplina(){
             return this.disciplina;
     }
@@ -18,11 +30,7 @@ public class Professor extends Pessoa{
     }
 
     
-    public Professor(String nome, String email, String disc, int carga){
-        super(nome,email);
-        this.disciplina = disc ;
-        this.cargaHoraria = carga;
-    }
+
 
 
     public void mostraDados(){

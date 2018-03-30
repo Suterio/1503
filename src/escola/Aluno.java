@@ -10,9 +10,14 @@ public class Aluno extends Pessoa{
             matricula = novaMatricula;
     }
 
-    public Aluno(String nome,String email, long matricula){
-        super(nome,email);
-        this.matricula = matricula;
+    public Aluno(){
+    	
+        super();
+        System.out.println("Informe a matricula: ");
+    	int mat = Escola.scan.nextInt();
+    	Escola.scan.nextLine();
+    	this.matricula = mat;
+    	
     }        
     public void mostraDados(){
         super.mostraDados();

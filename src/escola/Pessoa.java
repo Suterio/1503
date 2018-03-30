@@ -3,6 +3,16 @@ package escola;
 public class Pessoa{
     private String nome = "";
     private String email = "";
+    
+    public Pessoa(){
+    	System.out.println("Informe o nome:");
+    	String n = Escola.scan.nextLine();
+    	System.out.println("Informe o email:");
+    	String e = Escola.scan.nextLine();
+        this.nome = n;
+        this.email = e;
+    }
+
 
     public String getNome(){
             return this.nome;
@@ -23,10 +33,6 @@ public class Pessoa{
     }
 
 
-    public Pessoa(String n, String e){
-        this.nome = n;
-        this.email = e;
-    }
 
 
 
