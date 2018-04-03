@@ -29,7 +29,7 @@ public class Pessoa{
     }
     public void mostraDados(){
         System.out.println("Dados Cadastrais: ");
-        System.out.println("Nome: "+this.nome + " Email: "+this.email);
+        System.out.println("Nome: "+this.nome + " \nEmail: "+this.email);
     }
 
 

@@ -1,129 +1,166 @@
 package escola;
-import java.io.Console;
+
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
-public class Escola{
-	
+public class Escola {
+
 	public static ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
 	public static ArrayList<Professor> listaProf = new ArrayList<Professor>();
-	
+	public static int numMenu = 0;
 	public static Scanner scan = new Scanner(System.in);
-	
-	
-    public static void main (String args[]){
-    int opMenu = menu();
-    switch (opMenu) {
-	case 1:
-		//menuAlunos();
-		System.out.println("Menu 1");
-		Aluno al = new Aluno();
-		listaAlunos.add(al);
-		break;
-	case 2:
-		//menuProfessores();
-		System.out.println("Menu 2");
-		Professor pr = new Professor();
-		listaProf.add(pr);
-		break;
 
-	default:
-		System.out.println("Opção invalida");
-		System.exit(0);
-		break;
+	public static void main(String args[]) {
+		int op = menu();
+		while (op != 99) {
+			switch (op) {
+			case 1:
+				int op2 = menuAlunos();
+				while (op2 != 99) {
+					switch (op2) {
+					case 1:
+						cadAluno();
+						break;
+					case 2:
+						listaAlunos();
+						break;
+					default:
+						break;
+					}
+					op2 = menuAlunos();
+				}
+				break;
+			case 2:
+				int op3 = menuProf();
+				while (op3 != 99) {
+					switch (op3) {
+					case 1:
+						cadProf();
+						break;
+					case 2:
+						listaAlunos();
+						break;
+					default:
+						break;
+						
+					}
+					op3 = menuProf();
+				}
+				
+				break;
+			case 99:
+				System.out.println("Saindo do programa");
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Opção invalida");
+				System.exit(0);
+				break;
+			}
+			op = menu();
+
+		}
+
+	}
+
+	public static int menu() {
+		int numMenu;
+		try {
+			System.out.println("MENU PRINCIPAL");
+			System.out.println("Cadastro de Alunos e Cadastro de Professores ");
+			System.out.println("Digite  1 para alunos");
+			System.out.println("Digite 2 para Professores");
+			System.out.println("Digite  99 para sair do programa");
+			System.out.print("Digite aqui sua opção: ");
+			numMenu = Integer.parseInt(scan.nextLine());
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("Valor invalido");
+			return 0;
+		}
+		return numMenu;
+	}
+
+	public static int menuAlunos() {
+		int numMenu;
+		try {
+			System.out.println("MENU DE ALUNOS");
+			System.out.println("1 - Cadastro de Alunos");
+			System.out.println("2 - Lista de Alunos");
+			System.out.println("99 - Voltar");
+			numMenu = scan.nextInt();
+			scan.nextLine();
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("Valor invalido");
+			return 0;
+		}
+		return numMenu;
+	}
+
+	public static int menuProf() {
+		int numMenu;
+		try {
+			System.out.println("MENU DE PROFESSORES");
+			System.out.println("1 - Cadastro de Professores");
+			System.out.println("2 - Lista de Professores");
+			System.out.println("99 - Voltar");
+			numMenu = scan.nextInt();
+			scan.nextLine();
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("Valor invalido");
+			return 0;
+		}
+		return numMenu;
+	}
+
+	public static void listaAlunos() {
+		System.out.println("Dados dos Alunos:");
+		System.out.println("_______________________________________");
+		int i = 1;
+		for (Aluno aluno : listaAlunos) {
+			System.out.println("Número: "+ i);
+			i = i+1;
+			aluno.mostraDados();
+			System.out.println("_______________________________________");
+		}
 		
 	}
-    }
-    
-  /*  public static void testaConsole() {
+	
+	public static void listaProf() {
+		System.out.println("Dados dos Professores:");
+		System.out.println("_______________________________________");
+		int i = 1;
+		for (Professor prof : listaProf) {
+			System.out.println("Número: "+ i);
+			i = i+1;
+			prof.mostraDados();
+			System.out.println("_______________________________________");
+		}
 		
-    	Console cons = System.console();
-    	if(cons==null) {
-    		System.out.println("Console Inacessível");
-    		System.exit(1);
-    	
-    	}
-    	String valor = cons.readLine("Informe um valor: ");
-    	System.out.println("Você informou: "+valor);
-    	
-	}*/
-    
-    /*public static void testaScanner() {
-    	
-    	Scanner scan = new Scanner(System.in);
-    	System.out.println("Informe um valor String");
-    	String valor = scan.next();
-    	System.out.println("Você informou: "+valor);
-    	
-    	System.out.println("Informe a sua idade");
-    	int idade = scan.nextInt();    	
-    	System.out.println("Idade: "+idade);
-    	scan.nextLine();
-    	System.out.println("Informe seu nome completo");
-    	String nome = scan.nextLine();
-    	System.out.println("Nome Completo: "+nome);
-    	
-		
-	}*/
-    public static int menu() {
+	}	
+	
+	public static void cadAluno() {
+		Aluno al = new Aluno();
+		if (al != null) {
+			System.out.println("Aluno criado com sucesso!");
+			al.mostraDados();
+			listaAlunos.add(al);
+		}
+	}
+	public static void cadProf() {
+		Professor pf = new Professor();
+		if (pf != null) {
+			System.out.println("Professor criado com sucesso!");
+			pf.mostraDados();
+			listaProf.add(pf);
+		}
+	}
+	public static void limpaTela() {
+		System.out.println("\033[2J");
 
-    	int opcao = 0;
-    	System.out.println("MENU:");
-    	System.out.println("Cadastro de Alunos e Cadastro de Professores ");
-    	System.out.println("Digite a opção 1 para cadastro de alunos");
-    	System.out.println("Digite 2 Para cadastro de Professores");
-    	System.out.println("Digite  99 para sair do programa");
-    	System.out.print("Digite aqui sua opção: ");
-        opcao = Integer.parseInt(scan.nextLine());
-        return opcao;
-        
-/*        if(opcao == 1 ) {
-        	Aluno al = new Aluno("Gabriel","gabrielst997@gmail.com",19305);
-        }
-        else if(opcao == 2) {
-        	Prof pr = new Prof("Gabriel","gabrielst997@gmail.com",19305,"Matemática",650);
-        	
-        }else if(opcao == 99) {
-        	System.exit(0);
-        }*/
-    }
-    
-    
-    /*public static void testArrayList(){
-    	ArrayList<String> listaAlunos = new ArrayList<String>();
-    	ArrayList<Integer> listaNotas = new ArrayList<Integer>();
-    	listaAlunos.add("José");
-    	listaAlunos.add("Luis");
-    	listaAlunos.add("Tiago");
-    	listaAlunos.add("Pedro");
-    	listaAlunos.add("Henrique");
-    	listaAlunos.add("João");
-    	listaAlunos.add("Pietro");
-    	listaAlunos.add("Camila");
-    	listaAlunos.add("Igor");
-    	listaAlunos.add("Leonardo");
-    	listaNotas.add(1);
-    	listaNotas.add(2);
-    	listaNotas.add(3);
-    	listaNotas.add(4);
-    	listaNotas.add(5);
-    	listaNotas.add(6);
-    	listaNotas.add(7);
-    	listaNotas.add(8);
-    	listaNotas.add(9);
-    	listaNotas.add(10);
-    	for (Integer nota : listaNotas) {
-    		System.out.println("Nome do Aluno: " + listaAlunos.get(listaNotas.indexOf(nota)));
-    		if (nota >= 7) {
-				System.out.println("Passou no Trimestre!");
-    		} else
-				System.out.println("Não passou no Trimestre!");
-    		
-    	}	
-    		
-		
-    }*/
-
-
+	}
 
 }
