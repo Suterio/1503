@@ -39,7 +39,7 @@ public class Escola {
 						cadProf();
 						break;
 					case 2:
-						listaAlunos();
+						listaProf();
 						break;
 					default:
 						break;
