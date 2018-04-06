@@ -23,8 +23,16 @@ public class Escola {
 						cadAluno();
 						break;
 					case 2:
-						listaAlunos();
+						Aluno alu = buscaAluno();
+						if(alu != null) {
+							alu.dataUpdateAluno();
+							alu.update();
+						}else {
+							System.out.println("Aluno não foi encontrado!");				
+						}
 						break;
+					case 3:
+						listaAlunos();
 					default:
 						break;
 					}
@@ -39,6 +47,14 @@ public class Escola {
 						cadProf();
 						break;
 					case 2:
+						Professor prof = buscaProfessor();
+						if(prof != null) {
+							prof.dataUpdateProf();
+							prof.update();
+						}else {
+							System.out.println("Professor não encontrado!");
+						}
+					case 3:
 						listaProf();
 						break;
 					default:
@@ -87,7 +103,8 @@ public class Escola {
 		try {
 			System.out.println("MENU DE ALUNOS");
 			System.out.println("1 - Cadastro de Alunos");
-			System.out.println("2 - Lista de Alunos");
+			System.out.println("2 - Atualizar Alunos");
+			System.out.println("3 - Lista de Alunos");
 			System.out.println("99 - Voltar");
 			numMenu = scan.nextInt();
 			scan.nextLine();
@@ -104,7 +121,8 @@ public class Escola {
 		try {
 			System.out.println("MENU DE PROFESSORES");
 			System.out.println("1 - Cadastro de Professores");
-			System.out.println("2 - Lista de Professores");
+			System.out.println("2 - Atualizar um Professor");
+			System.out.println("3 - Lista de Professores");
 			System.out.println("99 - Voltar");
 			numMenu = scan.nextInt();
 			scan.nextLine();
@@ -119,10 +137,10 @@ public class Escola {
 	public static void listaAlunos() {
 		System.out.println("Dados dos Alunos:");
 		System.out.println("_______________________________________");
-		int i = 1;
+		int i = 0;
 		for (Aluno aluno : listaAlunos) {
-			System.out.println("Número: "+ i);
 			i = i+1;
+			System.out.println("Número: "+ i);
 			aluno.mostraDados();
 			System.out.println("_______________________________________");
 		}
@@ -145,6 +163,7 @@ public class Escola {
 	public static void cadAluno() {
 		Aluno al = new Aluno();
 		if (al != null) {
+			al.save();
 			System.out.println("Aluno criado com sucesso!");
 			al.mostraDados();
 			listaAlunos.add(al);
@@ -153,14 +172,38 @@ public class Escola {
 	public static void cadProf() {
 		Professor pf = new Professor();
 		if (pf != null) {
+			pf.save();
 			System.out.println("Professor criado com sucesso!");
 			pf.mostraDados();
 			listaProf.add(pf);
 		}
 	}
-	public static void limpaTela() {
-		System.out.println("\033[2J");
-
+	public static Professor buscaProfessor() {
+		String pesquisa = "";
+		System.out.println("Email do professor: ");
+    	pesquisa = Escola.scan.nextLine();
+    	System.out.println("\nProfessor encontrado!\n");
+    	for (Professor prof : listaProf) {
+    		if (prof.getEmail() == pesquisa) {
+    			prof.setIndice(listaProf.indexOf(prof));
+    			return prof;
+    		}
+    	}
+    	return null;    	
 	}
+	public static Aluno buscaAluno() {
+		String pesquisa = "";
+		System.out.println("Email do aluno: ");
+    	pesquisa = scan.nextLine();
+    	System.out.println("\nAluno encontrado!\n");
+    	for (Aluno alun : listaAlunos) {
+    		if (pesquisa.equals(alun.getEmail())) {
+    			alun.setIndice(listaAlunos.indexOf(alun));
+    			return alun;
+    		}
+    	}
+    	return null;    	
+	}
+
 
 }

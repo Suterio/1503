@@ -24,5 +24,29 @@ public class Aluno extends Pessoa{
         System.out.println("Dados da Matrícula: ");        
         System.out.println("Matrícula: "+this.matricula);
     }
+
+    public void dataUpdateAluno() {
+    	super.dataUpdate();
+    	int matric = 0;
+    	System.out.println("Informe a nova Matricula(Digite 0 para não alterar): ");
+    	matric = Escola.scan.nextInt();
+    	Escola.scan.nextLine();
+    	if(matric != 0) {
+    		this.matricula = matric;
+    	}
+    }
+    
+    public void save() {
+    	Escola.listaAlunos.add(this);
+    	
+    }
+    public void update() {
+    	Escola.listaAlunos.set(this.getIndice(), this);
+    }
+
+    public void delete() {
+    	
+    }
+
 }
 

@@ -41,4 +41,22 @@ public class Professor extends Pessoa{
         
     
     }
+    public void dataUpdateProf() {
+    	super.dataUpdate();
+    	int matric = 0;
+    	System.out.println("Informe a nova Matricula(Digite 0 para não alterar): ");
+    	matric = Escola.scan.nextInt();
+    	Escola.scan.nextLine();
+    	if(matric != 0) {
+    		this.matricula = matric;
+    	}
+    }
+    public void save() {
+    	Escola.listaProf.add(this);
+    	
+    }
+    public void update() {
+    	Escola.listaProf.set(this.getIndice(), this);
+    }
+
 }
