@@ -7,10 +7,9 @@ import java.util.InputMismatchException;
 public class Escola {
 
 	public static ArrayList<Aluno> listaAlunos = new ArrayList<Aluno>();
-	public static ArrayList<Professor> listaProf = new ArrayList<Professor>();
 	public static int numMenu = 0;
+	public static ArrayList<Professor> listaProf = new ArrayList<Professor>();
 	public static Scanner scan = new Scanner(System.in);
-
 	public static void main(String args[]) {
 		int op = menu();
 		while (op != 99) {
@@ -166,7 +165,6 @@ public class Escola {
 			al.save();
 			System.out.println("Aluno criado com sucesso!");
 			al.mostraDados();
-			listaAlunos.add(al);
 		}
 	}
 	public static void cadProf() {
@@ -175,7 +173,6 @@ public class Escola {
 			pf.save();
 			System.out.println("Professor criado com sucesso!");
 			pf.mostraDados();
-			listaProf.add(pf);
 		}
 	}
 	public static Professor buscaProfessor() {

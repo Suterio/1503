@@ -43,17 +43,23 @@ public class Professor extends Pessoa{
     }
     public void dataUpdateProf() {
     	super.dataUpdate();
-    	int matric = 0;
-    	System.out.println("Informe a nova Matricula(Digite 0 para não alterar): ");
-    	matric = Escola.scan.nextInt();
+    	String dicip;
+    	int cargahora = 0;
+    	System.out.println("Informe a nova Disciplina: ");
+    	dicip = Escola.scan.nextLine();
+    	if(!dicip.isEmpty()) {
+    		this.disciplina = dicip;
+    	}
+    	System.out.println("Informe nova carga Horária(Digite 0 para não alterar)");
+    	cargahora = Escola.scan.nextInt();
     	Escola.scan.nextLine();
-    	if(matric != 0) {
-    		this.matricula = matric;
+    	if(cargahora != 0) {
+    		this.cargaHoraria = cargahora;
     	}
     }
-    public void save() {
+    public boolean save() {
     	Escola.listaProf.add(this);
-    	
+    	return true;
     }
     public void update() {
     	Escola.listaProf.set(this.getIndice(), this);

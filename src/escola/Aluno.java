@@ -36,17 +36,14 @@ public class Aluno extends Pessoa{
     	}
     }
     
-    public void save() {
+    public boolean save() {
     	Escola.listaAlunos.add(this);
-    	
+    	return true;
     }
     public void update() {
     	Escola.listaAlunos.set(this.getIndice(), this);
     }
 
-    public void delete() {
-    	
-    }
 
 }
 
