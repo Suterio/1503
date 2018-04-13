@@ -178,10 +178,10 @@ public class Escola {
 	public static Professor buscaProfessor() {
 		String pesquisa = "";
 		System.out.println("Email do professor: ");
-    	pesquisa = Escola.scan.nextLine();
+    	pesquisa = scan.nextLine();
     	System.out.println("\nProfessor encontrado!\n");
     	for (Professor prof : listaProf) {
-    		if (prof.getEmail() == pesquisa) {
+    		if (pesquisa.equals(prof.getEmail())) {
     			prof.setIndice(listaProf.indexOf(prof));
     			return prof;
     		}
