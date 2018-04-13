@@ -1,19 +1,29 @@
 package escola;
 
+import java.util.InputMismatchException;
+
 public class Professor extends Pessoa{
     private String disciplina;
     private int cargaHoraria;
 
     public Professor(){
         super();
-        System.out.println("Informe a disciplina:");
-        String dis = Escola.scan.nextLine();
-        System.out.println("Informe a Carga Horaria:");
-        int ch = Escola.scan.nextInt();
-        Escola.scan.nextLine();
-        this.disciplina = dis ;
-        this.cargaHoraria = ch;
+        try {
+	        System.out.println("Informe a disciplina:");
+	        String dis = Escola.scan.nextLine();
+	        System.out.println("Informe a Carga Horaria:");
+	        int ch = Escola.scan.nextInt();
+	        Escola.scan.nextLine();
+	        this.disciplina = dis ;
+	        this.cargaHoraria = ch;
+        }catch (InputMismatchException e) {
+        	Escola.scan.nextLine();
+			System.out.println("Valor inválido(Somente números)");
+			System.out.println("Falha na criação de um novo professor");
+		}
     }
+
+
     
     
     public String getDisciplina(){

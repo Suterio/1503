@@ -135,33 +135,33 @@ public class Escola {
 
 	public static void listaAlunos() {
 		System.out.println("Dados dos Alunos:");
-		System.out.println("_______________________________________");
+		System.out.println("-------------------------------------------");
 		int i = 0;
 		for (Aluno aluno : listaAlunos) {
 			i = i+1;
 			System.out.println("Número: "+ i);
 			aluno.mostraDados();
-			System.out.println("_______________________________________");
-		}
+			System.out.println("-------------------------------------------");
 		
+		}
 	}
 	
 	public static void listaProf() {
 		System.out.println("Dados dos Professores:");
-		System.out.println("_______________________________________");
+		System.out.println("-------------------------------------------");
 		int i = 1;
 		for (Professor prof : listaProf) {
 			System.out.println("Número: "+ i);
 			i = i+1;
 			prof.mostraDados();
-			System.out.println("_______________________________________");
+			System.out.println("-------------------------------------------");
 		}
 		
 	}	
 	
 	public static void cadAluno() {
 		Aluno al = new Aluno();
-		if (al != null) {
+		if (al != null && al.getMatricula() != 0) {
 			al.save();
 			System.out.println("Aluno criado com sucesso!");
 			al.mostraDados();
@@ -169,7 +169,7 @@ public class Escola {
 	}
 	public static void cadProf() {
 		Professor pf = new Professor();
-		if (pf != null) {
+		if (pf != null && pf.getCargaHoraria() != 0) {
 			pf.save();
 			System.out.println("Professor criado com sucesso!");
 			pf.mostraDados();

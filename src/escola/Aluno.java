@@ -1,5 +1,7 @@
 package escola;
 
+import java.util.InputMismatchException;
+
 public class Aluno extends Pessoa{
     private long matricula;
     
@@ -10,14 +12,19 @@ public class Aluno extends Pessoa{
             matricula = novaMatricula;
     }
 
-    public Aluno(){
-    	
-        super();
-        System.out.println("Informe a matricula: ");
-    	int mat = Escola.scan.nextInt();
-    	Escola.scan.nextLine();
-    	this.matricula = mat;
-    	
+
+    public  Aluno(){
+	        super();
+	    try {	   
+	        System.out.println("Informe a matricula: ");
+	    	int mat = Escola.scan.nextInt();
+	    	Escola.scan.nextLine();
+	    	this.matricula = mat;
+    	}catch (InputMismatchException e) {
+			Escola.scan.nextLine();
+			System.out.println("Valor invalido(Somente Números)");
+			System.out.println("Falha na criação do Aluno\n");
+    	}
     }        
     public void mostraDados(){
         super.mostraDados();
